@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/', 'TodosController@index');
+
+Route::get('/create', 'TodosController@create');
+
+Route::post('/store', 'TodosController@store');
+
+Route::get('/todos/{id}/complete', 'TodosController@complete');
+
+Route::get('/todos/{id}/uncomplete', 'TodosController@uncomplete');
+
+Route::get('{id}', 'TodosController@edit');
+
+Route::post('{id}/update', 'TodosController@update');
+
+Route::get('{id}/delete', 'TodosController@destroy');
